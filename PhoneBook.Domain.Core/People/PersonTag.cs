@@ -1,4 +1,6 @@
-﻿namespace PhoneBook.Domain.Core.People
+﻿using PhoneBook.Domain.Core.Tags;
+
+namespace PhoneBook.Domain.Core.People
 {
     public class PersonTag : BaseEntity
     {
