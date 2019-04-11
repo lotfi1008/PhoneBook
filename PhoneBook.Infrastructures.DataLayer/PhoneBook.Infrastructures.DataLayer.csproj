@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PhoneBook.Domain.Contracts\PhoneBook.Domain.Contracts.csproj" />
     <ProjectReference Include="..\PhoneBook.Domain.Core\PhoneBook.Domain.Core.csproj" />
   </ItemGroup>
 
