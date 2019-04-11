@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PhoneBook.Domain.Contracts.DataLayer
+namespace PhoneBook.Domain.Contracts.Common
 {
     public interface IBaseRepository<TEntity> where TEntity: BaseEntity,new()
     {

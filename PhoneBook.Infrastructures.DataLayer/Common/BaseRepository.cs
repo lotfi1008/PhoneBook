@@ -1,12 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PhoneBook.Domain.Contracts.DataLayer;
+﻿using PhoneBook.Domain.Contracts.Common;
 using PhoneBook.Domain.Core;
-using System;
-using System.Collections.Generic;
+using PhoneBook.Infrastructures.DataLayer.Common;
 using System.Linq;
-using System.Text;
 
-namespace PhoneBook.Infrastructures.DataLayer.Common
+namespace PhoneBook.Infrastructures.Common
 {
     public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity>
         where TEntity :BaseEntity,new()
