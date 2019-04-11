@@ -26,8 +26,8 @@ namespace PhoneBook.EndPoints.WebUI
         public void ConfigureServices(IServiceCollection services)
         {
 
- 
-            services.AddDbContext<PhoneBookContext>(c=> c.UseSqlServer(Configuration.GetConnectionString("nargoon")));
+            services.AddMvc();
+            services.AddDbContext<PhoneBookContext>(c => c.UseSqlServer(Configuration.GetConnectionString("nargoon")));
             services.AddScoped<IPersonRepository, PersonRepository>();
         }
 
@@ -43,18 +43,13 @@ namespace PhoneBook.EndPoints.WebUI
             {
                 app.UseExceptionHandler("/Home/Exception");
             }
-
-            app.Run(async (context) =>
+            app.UseStaticFiles();
+            app.UseMvc(routes =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: "{controller=Home}/{action=Index}/{id?}");
-            //});
         }
     }
 }
