@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PhoneBook.Infrastructures.DataLayer.Migrations
 {
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Person",
+                name: "People",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -21,11 +21,11 @@ namespace PhoneBook.Infrastructures.DataLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Person", x => x.Id);
+                    table.PrimaryKey("PK_People", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tag",
+                name: "Tags",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -34,11 +34,11 @@ namespace PhoneBook.Infrastructures.DataLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tag", x => x.Id);
+                    table.PrimaryKey("PK_Tags", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Phone",
+                name: "Phones",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -49,17 +49,17 @@ namespace PhoneBook.Infrastructures.DataLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Phone", x => x.Id);
+                    table.PrimaryKey("PK_Phones", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Phone_Person_PersonId",
+                        name: "FK_Phones_People_PersonId",
                         column: x => x.PersonId,
-                        principalTable: "Person",
+                        principalTable: "People",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PersonTag",
+                name: "PersonTags",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -69,50 +69,50 @@ namespace PhoneBook.Infrastructures.DataLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersonTag", x => x.Id);
+                    table.PrimaryKey("PK_PersonTags", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PersonTag_Person_PersonId",
+                        name: "FK_PersonTags_People_PersonId",
                         column: x => x.PersonId,
-                        principalTable: "Person",
+                        principalTable: "People",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PersonTag_Tag_TagId",
+                        name: "FK_PersonTags_Tags_TagId",
                         column: x => x.TagId,
-                        principalTable: "Tag",
+                        principalTable: "Tags",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_PersonTag_PersonId",
-                table: "PersonTag",
+                name: "IX_PersonTags_PersonId",
+                table: "PersonTags",
                 column: "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PersonTag_TagId",
-                table: "PersonTag",
+                name: "IX_PersonTags_TagId",
+                table: "PersonTags",
                 column: "TagId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Phone_PersonId",
-                table: "Phone",
+                name: "IX_Phones_PersonId",
+                table: "Phones",
                 column: "PersonId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "PersonTag");
+                name: "PersonTags");
 
             migrationBuilder.DropTable(
-                name: "Phone");
+                name: "Phones");
 
             migrationBuilder.DropTable(
-                name: "Tag");
+                name: "Tags");
 
             migrationBuilder.DropTable(
-                name: "Person");
+                name: "People");
         }
     }
 }

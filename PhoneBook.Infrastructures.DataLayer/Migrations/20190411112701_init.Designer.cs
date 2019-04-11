@@ -10,8 +10,8 @@ using PhoneBook.Infrastructures.DataLayer.Common;
 namespace PhoneBook.Infrastructures.DataLayer.Migrations
 {
     [DbContext(typeof(PhoneBookContext))]
-    [Migration("20190410230707_Init")]
-    partial class Init
+    [Migration("20190411112701_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,7 +44,7 @@ namespace PhoneBook.Infrastructures.DataLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Person");
+                    b.ToTable("People");
                 });
 
             modelBuilder.Entity("PhoneBook.Domain.Core.People.PersonTag", b =>
@@ -63,7 +63,7 @@ namespace PhoneBook.Infrastructures.DataLayer.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("PersonTag");
+                    b.ToTable("PersonTags");
                 });
 
             modelBuilder.Entity("PhoneBook.Domain.Core.Phones.Phone", b =>
@@ -83,7 +83,7 @@ namespace PhoneBook.Infrastructures.DataLayer.Migrations
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("Phone");
+                    b.ToTable("Phones");
                 });
 
             modelBuilder.Entity("PhoneBook.Domain.Core.Tags.Tag", b =>
@@ -97,7 +97,7 @@ namespace PhoneBook.Infrastructures.DataLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tag");
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("PhoneBook.Domain.Core.People.PersonTag", b =>
