@@ -17,7 +17,7 @@
 
     <!-- Custom styles for this template-->
     <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
-
+    @RenderSection("head", false)
 </head>
 
 <body id="page-top">
@@ -42,8 +42,8 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    
-                    <h1 class="h3 mb-4 text-gray-800">@RenderSection("Title",false)</h1>
+
+                    <h1 class="h3 mb-4 text-gray-800">@RenderSection("Title", false)</h1>
                     @RenderBody()
 
                 </div>
@@ -92,7 +92,10 @@
 
     <!-- Custom scripts for all pages-->
     <script src="~/js/sb-admin-2.min.js"></script>
+    <script src="~/vendor/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/vendor/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
+    @RenderSection("scripts", false)
 </body>
 
 </html>

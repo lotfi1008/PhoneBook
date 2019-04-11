@@ -9,8 +9,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PhoneBook.Domain.Contracts.People;
+using PhoneBook.Domain.Contracts.Phones;
+using PhoneBook.Domain.Contracts.Tags;
 using PhoneBook.Infrastructures.DataLayer.Common;
 using PhoneBook.Infrastructures.DataLayer.People;
+using PhoneBook.Infrastructures.DataLayer.Phones;
+using PhoneBook.Infrastructures.DataLayer.Tags;
 
 namespace PhoneBook.EndPoints.WebUI
 {
@@ -29,6 +33,8 @@ namespace PhoneBook.EndPoints.WebUI
             services.AddMvc();
             services.AddDbContext<PhoneBookContext>(c => c.UseSqlServer(Configuration.GetConnectionString("nargoon")));
             services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddScoped<ITagRepository, TagRepository>();
+            services.AddScoped<IPhoneRepository, PhoneRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

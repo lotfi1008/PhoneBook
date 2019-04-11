@@ -5,5 +5,6 @@ namespace PhoneBook.Domain.Contracts.People
 {
     public interface IPersonRepository:IBaseRepository<Person>
     {
+
     }
 }
