@@ -18,7 +18,7 @@ namespace PhoneBook.EndPoints.WebUI.Controllers
         private readonly ITagRepository tagRepository;
         private readonly IPersonRepository personRepository;
 
-        public PeopleController(ITagRepository tagRepository,IPersonRepository personRepository)
+        public PeopleController(ITagRepository tagRepository, IPersonRepository personRepository)
         {
             this.tagRepository = tagRepository;
             this.personRepository = personRepository;
@@ -26,7 +26,8 @@ namespace PhoneBook.EndPoints.WebUI.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View();
+            var people = personRepository.GetAll().ToList();
+            return View(people);
         }
 
         public IActionResult Add()
@@ -38,8 +39,8 @@ namespace PhoneBook.EndPoints.WebUI.Controllers
         [HttpPost]
         public IActionResult Add(AddNewPersonGetViewModel model)
         {
-        
-           
+
+
             if (ModelState.IsValid)
             {
                 Person person = new Person
@@ -53,7 +54,7 @@ namespace PhoneBook.EndPoints.WebUI.Controllers
                         TagId = c
                     }).ToList())
                 };
-                if (model.Image.Length > 0)
+                if (model?.Image?.Length > 0)
                 {
                     using (var ms = new MemoryStream())
                     {
@@ -66,7 +67,8 @@ namespace PhoneBook.EndPoints.WebUI.Controllers
                 return RedirectToAction("Index");
             }
 
-            AddNewPersonDisplayViewModel modelforDisplay = new AddNewPersonDisplayViewModel {
+            AddNewPersonDisplayViewModel modelforDisplay = new AddNewPersonDisplayViewModel
+            {
                 Address = model.Address,
                 Email = model.Email,
                 LastName = model.LastName,
