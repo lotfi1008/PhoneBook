@@ -20,6 +20,7 @@
     <ProjectReference Include="..\PhoneBook.Domain.Contracts\PhoneBook.Domain.Contracts.csproj" />
     <ProjectReference Include="..\PhoneBook.Domain.Core\PhoneBook.Domain.Core.csproj" />
     <ProjectReference Include="..\PhoneBook.Infrastructures.DataLayer\PhoneBook.Infrastructures.DataLayer.csproj" />
+    <ProjectReference Include="..\PhoneBook.Services.ApplicatinServices\PhoneBook.Services.ApplicatinServices.csproj" />
   </ItemGroup>
 
 </Project>

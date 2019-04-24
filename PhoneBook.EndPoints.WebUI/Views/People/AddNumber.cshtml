@@ -1,0 +1,28 @@
+﻿@model PhoneBook.EndPoints.WebUI.Models.People.AddNuwNumberViewModel
+@{
+    ViewData["Title"] = "AddNumber";
+}
+
+<h1>AddNumber</h1>
+
+<form asp-controller="People" asp-action="AddNumber" method="post">
+    <div asp-validation-summary="All"></div>
+    @Html.HiddenFor(c => c.PersonId)
+    <div class="form-group">
+        <label asp-for="Number"></label>
+        <input type="text" asp-for="Number" class="form-control" maxlength="13" />
+        <span asp-validation-for="Number"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneType"></label>
+        <select class="form-control" asp-for="PhoneType" asp-items="Html.GetEnumSelectList<PhoneBook.Domain.Core.Phones.PhoneType>()">
+            <option value="">Please Select Phone Type</option>
+        </select>
+        <span asp-validation-for="PhoneType"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Add" />
+        <a  class="btn btn-warning">Cancel</a>
+    </div>
+
+</form>

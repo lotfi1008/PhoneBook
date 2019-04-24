@@ -8,7 +8,7 @@ namespace PhoneBook.Infrastructures.Common
     public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity>
         where TEntity :BaseEntity,new()
     {
-        private readonly PhoneBookContext dbContext;
+        protected readonly PhoneBookContext dbContext;
 
         public BaseRepository(PhoneBookContext dbContext)
         {

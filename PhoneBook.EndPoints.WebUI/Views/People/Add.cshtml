@@ -37,11 +37,23 @@
         <label asp-for="Image"></label>
         <input type="file" asp-for="Image" class="form-control" />
     </div>
+
+    @{
+        List<int> selectedTag= (List<int>)ViewBag.SelectedItem;
+        
+    }
     <div class="form-group">
         <select class="form-control select2" name="SelectedTag" multiple>
             @foreach (var item in Model.TagsForDisplay)
             {
-                <option value="@item.Id">@item.Title</option>
+                if (ViewBag.SelectedItem!=null && selectedTag.Contains(item.Id))
+                {
+                    <option selected value="@item.Id">@item.Title</option>
+                }
+                else
+                {
+                    <option value="@item.Id">@item.Title</option>
+                }
             }
 
         </select>

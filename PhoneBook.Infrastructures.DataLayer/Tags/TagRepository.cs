@@ -1,4 +1,5 @@
-﻿using PhoneBook.Domain.Contracts.Tags;
+﻿using Microsoft.EntityFrameworkCore;
+using PhoneBook.Domain.Contracts.Tags;
 using PhoneBook.Domain.Core.Tags;
 using PhoneBook.Infrastructures.Common;
 using PhoneBook.Infrastructures.DataLayer.Common;
