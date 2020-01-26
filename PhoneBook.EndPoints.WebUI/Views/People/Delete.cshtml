@@ -1,0 +1,40 @@
+﻿@model PhoneBook.EndPoints.WebUI.Models.People.PersonDetailViewModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1>حذف مخاطب</h1>
+
+<div class="row">
+
+    <div class="col-5  alert alert-danger">از حذف این مخاطب اطمینان دارید؟</div>
+</div>
+<div class="row">
+
+    <div class="col-md-2 ">
+        @{
+            var imgSrc = String.Format("data:image/gif;base64,{0}", Model.Image);
+        }
+
+        <img src="@imgSrc" height="150" width="150" class="img-thumbnail" alt="Alternate Text" />
+    </div>
+    <div class="col-md-10">
+        <div>
+            <b><label asp-for="FirstName"></label>:</b> @Model.FirstName
+        </div>
+        <div>
+            <b><label asp-for="LastName"></label> :</b> @Model.LastName
+        </div>
+        <div>
+            <b><label asp-for="Email"></label> :</b> @Model.Email
+        </div>
+        <div>
+            <b><label asp-for="Address"></label> :</b> @Model.Address
+        </div>
+    </div>
+</div>
+<br />
+<form asp-action="DeleteConfirm" asp-controller="People" method="post" method="post">
+    <input type="hidden" asp-for="PersonId" />
+    <input type="submit" class="btn btn-danger" value="حذف شود" />
+</form>

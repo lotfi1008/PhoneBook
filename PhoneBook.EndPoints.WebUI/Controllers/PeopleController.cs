@@ -85,6 +85,55 @@ namespace PhoneBook.EndPoints.WebUI.Controllers
             return View(modelforDisplay);
         }
 
+        public IActionResult Update(int id)
+        {
+            var person = peopleService.GetPersonWithChilds(id);
+            if (person != null)
+            {
+                UpdatePersonViewModel model = new UpdatePersonViewModel() {
+                    Id = person.Id,
+                    FirstName = person.FirstName,
+                    LastName = person.LastName,
+                    Email = person.Email,
+                    Address = person.Address,
+                    CurrentImage = person.Image
+                };
+                return View(model);
+            }
+            return NotFound();
+        }
+        
+        [HttpPost]
+        public IActionResult Update(UpdatePersonViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Person person = new Person
+                {
+                    Id=model.Id,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    Address = model.Address
+                };
+
+                if (model?.Image?.Length > 0)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        model.Image.CopyTo(ms);
+                        var fileBytes = ms.ToArray();
+                        person.Image = Convert.ToBase64String(fileBytes);
+                    }
+                }
+                Person result = peopleService.UpdatePerson(person);
+                if (result != null)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            return View(model);
+        }
 
         public IActionResult Detail(int id)
         {
@@ -108,7 +157,6 @@ namespace PhoneBook.EndPoints.WebUI.Controllers
             return View();
         }
 
-
         public IActionResult AddNumber(int id)
         {
             return View(new AddNuwNumberViewModel { PersonId = id });
@@ -121,7 +169,7 @@ namespace PhoneBook.EndPoints.WebUI.Controllers
                 bool IsDuplicate = phoneService.IsPhoneNumberIsDuplicate(model.Number);
                 if (IsDuplicate)
                 {
-                    ModelState.AddModelError("Number", "This Phone Number is Duplicate...");
+                    ModelState.AddModelError("Number", "شماره تلفن برای مخاطب دیگری ثبت شده است");
                 }
                 else
                 {
@@ -142,6 +190,40 @@ namespace PhoneBook.EndPoints.WebUI.Controllers
                 }
             }
             return View();
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var person = peopleService.GetPersonWithChilds(id);
+            if (person != null)
+            {
+                PersonDetailViewModel model = new PersonDetailViewModel()
+                {
+                    PersonId = person.Id,
+                    FirstName = person.FirstName,
+                    LastName = person.LastName,
+                    Email = person.Email,
+                    Address = person.Address,
+                    Image = person.Image
+                };
+                return View(model);
+            }
+            return NotFound();
+        }
+
+        [HttpPost]
+        public IActionResult DeleteConfirm(int PersonId)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                var result = peopleService.Delete(PersonId);
+                if (result)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            return RedirectToAction("Detail", new { id = PersonId });
         }
     }
 }

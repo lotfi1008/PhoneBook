@@ -8,5 +8,6 @@ namespace PhoneBook.Domain.Contracts.People
     {
         Person GetWithPhones(int id);
         bool AddPhoneToPerson(Phone phone, int personId);
+        Person Update(Person person);
     }
 }

@@ -36,6 +36,19 @@ namespace PhoneBook.Services.ApplicatinServices.People
             }
         }
 
+        public bool Delete(int id)
+        {
+            try
+            {
+                personRepository.Delete(id);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public List<Person> GetAllPerson()
         {
             return personRepository.GetAll().ToList();
@@ -46,6 +59,12 @@ namespace PhoneBook.Services.ApplicatinServices.People
             Person person = personRepository.GetWithPhones(personId);
             
             return person;
+        }
+
+        public Person UpdatePerson(Person person)
+        {
+            return personRepository.Update(person);
+
         }
     }
 }

@@ -10,7 +10,7 @@ namespace PhoneBook.Infrastructures.DataLayer.Common
         public PhoneBookContext CreateDbContext(string[] args)
         {
             var builder = new DbContextOptionsBuilder<PhoneBookContext>();
-            builder.UseSqlServer("Server=DESKTOP-DPJGB00\\MSSQL2017;Database=PhoneBookDb;Integrated Security=True;MultipleActiveResultSets=true");
+            builder.UseSqlServer("Server=.\\MSSQL2017;Initial catalog=PhoneBookDB;Integrated security=true;");
 
             return new PhoneBookContext(builder.Options);
         }    

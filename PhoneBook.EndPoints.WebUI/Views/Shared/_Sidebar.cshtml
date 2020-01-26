@@ -1,11 +1,11 @@
-﻿<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+﻿<ul class="navbar-nav style-rtl bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+            <i class="fas fa-book"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">دفترچه تلفن</div>
     </a>
 
     <!-- Divider -->
@@ -13,9 +13,9 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" asp-action="index" asp-controller="Home" >
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+            <span>خانه</span>
         </a>
     </li>
 
@@ -24,33 +24,33 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
+        عملیات
     </div>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>People</span>
+            <span>مخاطبین</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" asp-controller="People" asp-action="Add">Add</a>
-                <a class="collapse-item" asp-controller="People" asp-action="Index">List</a>
+                <h6 class="collapse-header">عملیات:</h6>
+                <a class="collapse-item" asp-controller="People" asp-action="Index">مشاهده همه</a>
+                <a class="collapse-item" asp-controller="People" asp-action="Add">افزودن</a>
             </div>
         </div>
     </li>
     
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    @*<hr class="sidebar-divider">*@
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    @*<div class="sidebar-heading">
         Addons
-    </div>
+    </div>*@
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item active">
+    @*<li class="nav-item active">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
             <span>Pages</span>
@@ -67,30 +67,30 @@
                 <a class="collapse-item active" href="blank.html">Blank Page</a>
             </div>
         </div>
-    </li>
+    </li>*@
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
+    @*<li class="nav-item">
         <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Charts</span>
         </a>
-    </li>
+    </li>*@
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+    @*<li class="nav-item">
         <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span>
         </a>
-    </li>
+    </li>*@
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    @*<hr class="sidebar-divider d-none d-md-block">*@
 
     <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
+    @*<div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
+    </div>*@
 
 </ul>

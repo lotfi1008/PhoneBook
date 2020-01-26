@@ -26,5 +26,24 @@ namespace PhoneBook.Infrastructures.DataLayer.People
         {
             return dbContext.People.Where(c => c.Id == id).Include(c => c.Phones).FirstOrDefault();
         }
+
+        public Person Update(Person person)
+        {
+            var p = dbContext.People.Find(person.Id);
+            if (p == null)
+            {
+                return null;
+            }
+            p.Address = person.Address;
+            p.Email = person.Email;
+            p.FirstName = person.FirstName;
+            p.LastName = person.LastName;
+            if (!string.IsNullOrWhiteSpace(person.Image))
+            {
+                p.Image = person.Image;
+            }
+            dbContext.SaveChanges();
+            return p;
+        }
     }
 }

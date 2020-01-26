@@ -16,6 +16,7 @@ namespace PhoneBook.Infrastructures.DataLayer.People
             builder.Property(c => c.Image).IsUnicode(false);
             builder.Property(c => c.Email).HasMaxLength(256);
             builder.Property(c => c.Address).HasMaxLength(500);
+            builder.HasMany(c => c.Phones).WithOne().OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

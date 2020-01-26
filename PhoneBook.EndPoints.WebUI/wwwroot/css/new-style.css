@@ -1,0 +1,50 @@
+.navbar-nav.style-rtl {
+    padding-inline-start: 0 !important;
+}
+
+
+body {
+    text-align: right;
+}
+
+@media (min-width: 768px) {
+
+    .sidebar .nav-item .nav-link {
+        text-align: right;
+    }
+}
+
+@media (min-width: 768px) {
+    .sidebar .sidebar-heading {
+        text-align: right;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .sidebar.toggled .nav-item .collapse {
+        right: calc(6.5rem + 1.5rem / 2);
+    }
+}
+
+.input-group > .input-group-append > .btn, .input-group > .input-group-append > .input-group-text, .input-group > .input-group-prepend:first-child > .btn:not(:first-child), .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child), .input-group > .input-group-prepend:not(:first-child) > .btn, .input-group > .input-group-prepend:not(:first-child) > .input-group-text {
+    border-top-left-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input-group > .custom-select:not(:last-child), .input-group > .form-control:not(:last-child) {
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+span.field-validation-error {
+    color: red;
+}
+
+.validation-summary-errors {
+    color: red;
+}

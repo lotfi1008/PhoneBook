@@ -11,8 +11,9 @@ namespace PhoneBook.Domain.Contracts.People
     {
         List<Person> GetAllPerson();
         Person AddNewPerson(Person person);
+        Person UpdatePerson(Person person);
         Person GetPersonWithChilds(int personId);
         bool AddNewNumberForPerson(Phone phone, int personId);
-        
+        bool Delete(int id);
     }
 }

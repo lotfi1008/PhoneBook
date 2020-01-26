@@ -1,4 +1,4 @@
-﻿@model PhoneBook.EndPoints.WebUI.Models.People.AddNewPersonDisplayViewModel
+﻿@model PhoneBook.EndPoints.WebUI.Models.People.UpdatePersonViewModel
 @{
 
 }
@@ -6,8 +6,9 @@
 {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 }
-<form asp-action="Add" asp-controller="People" method="post" enctype="multipart/form-data">
+<form asp-action="update" asp-controller="People" method="post" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly"></div>
+    
     <div class="form-group">
 
         <label asp-for="FirstName"></label>
@@ -38,33 +39,38 @@
         <input type="file" asp-for="Image" class="form-control" />
         <span asp-validation-for="Image"></span>
     </div>
+    <div class="form-group">
+        <label asp-for="CurrentImage"></label>
+        <img src="data:image/png;base64,@Model.CurrentImage" class="img img-thumbnail" width="100"/>
+        
+    </div>
 
     @{
-        List<int> selectedTag= (List<int>)ViewBag.SelectedItem;
-        
-    }
-<div class="form-group">
-    <label asp-for="TagsForDisplay"></label>
-    <select class="form-control select2" name="SelectedTag" multiple>
-        @foreach (var item in Model.TagsForDisplay)
-        {
-            if (ViewBag.SelectedItem != null && selectedTag.Contains(item.Id))
-            {
-                <option selected value="@item.Id">@item.Title</option>
-            }
-            else
-            {
-                <option value="@item.Id">@item.Title</option>
-            }
-        }
+        List<int> selectedTag = (List<int>)ViewBag.SelectedItem;
 
-    </select>
-</div>
+    }
+    @*<div class="form-group">
+            <label asp-for="TagsForDisplay"></label>
+            <select class="form-control select2" name="SelectedTag" multiple>
+                @foreach (var item in Model.TagsForDisplay)
+                {
+                    if (ViewBag.SelectedItem != null && selectedTag.Contains(item.Id))
+                    {
+                        <option selected value="@item.Id">@item.Title</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Title</option>
+                    }
+                }
+
+            </select>
+        </div>*@
     <input type="submit" class="btn btn-primary" value="Save" />
 </form>
 
 
-@section scripts
+@*@section scripts
 {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
@@ -73,4 +79,4 @@
             $('.select2').select2();
         });
     </script>
-}
+}*@
